@@ -23,23 +23,40 @@
     <progress id="file2" value="63" max="100"></progress><BR>
     
     <label for="title3" id="mylist3">C++</label>
-    <progress id="file3" value="43" max="100"></progress>
+    <progress id="file3" value="40" max="100"></progress>
 
     
     <p onclick="validate()" id="clickme" class="button-test">Validate </p>
+
+
     <div class="popup">
+    
+
+
         <div class="popup-content">
             <p class="close" id="close">close</p>
-            <div class="" id="pop" style="color: green;">
 
-            </div>
+            <p id="pop-tag"> 
+
+            </p>
+            <p class="" id="pop" style="color: green;">
+
+            </p>
+
+            <span id="out">
+
+            </span>
 
         </div>
         
     </div>
 
+
+
+    
+
 <script>
-    function validate(){
+ function validate(){
 
 
 var item1 = document.getElementById("mylist");
@@ -65,16 +82,36 @@ var item6 = document.getElementById("file2");
 var check6= document.getElementsByTagName("progress")[2];
 
 
-var val1 = item1.isSameNode(check1);
-var val2 = item2.isSameNode(check2);
-var val3 = item3.isSameNode(check3);
-var val4 = item4.isSameNode(check4);
-var val5 = item5.isSameNode(check5);
-var val6 = item6.isSameNode(check6);
-if(val1===true&&val2===true&&val3===true&&val4===true&&val5===true&&val6===true){
-    
+var val1 = item1===check1;
+var val2 = item2===check2;
+var val3 = item3===check3;
+var val4 = item4===check4;
+var val5 = item5===check5;
+var val6 = item6===check6;
 
-    
+var arrtest=[];
+arrtest.push(val1);
+arrtest.push(val2);
+arrtest.push(val3);
+arrtest.push(val4);
+arrtest.push(val5);
+arrtest.push(val6);
+var count = 0;
+var fail = 0;
+document.getElementById("pop-tag").innerHTML+="<span style=\"font-size: 25px;margin-left:130px\";>Tag-Test Case Output</span><br>"
+for(var k=1;k<arrtest.length+1;k++){
+    if(arrtest[k]===true){
+          document.getElementById("pop-tag").innerHTML+="<span style=\"color: green\";>tag-test case "+k+"  passed</span><br>"
+          count++;
+        }
+        else{
+            document.getElementById("pop-tag").innerHTML+="<span style=\"color:red\";>tag-test case "+k+" failed</span><br>";
+            fail++;
+        }
+}
+document.getElementById("pop-tag").innerHTML+="<p style = \"color: blue\">"+count+" passed and "+fail+"failed</p><br>"
+
+
     var fix1 = 72;
     var t1 = document.getElementsByTagName("progress")[0].value;
     var res1 = fix1===t1;
@@ -99,34 +136,34 @@ if(val1===true&&val2===true&&val3===true&&val4===true&&val5===true&&val6===true)
     array1.push(res3);
     array1.push(res4);
 
-    
-    for(let i=0;i<4;i++){
+    document.getElementById("pop-tag").innerHTML+="<span style=\"font-size: 25px;margin-left:130px\";>Value-Test Case Output</span><br>" ;
+    var tagCount=0;
+    var tagFailed=0; 
+    for(let i=1;i<5;i++){
         if(array1[i]===true){
-          document.getElementById("pop").innerHTML+="<h3>pass</h3>";
+          document.getElementById("pop").innerHTML+="<span>test case "+i+"  passed</span><br>"
+          tagCount++;
         }
         else{
-            document.getElementById("pop").innerHTML+="<h3 >failed</h3>";;
+            document.getElementById("pop").innerHTML+="<span style=\"color:red\";>test case "+i+" failed</span><br>";
+            tagFailed++
         }
     }
+    document.getElementById("out").innerHTML+="<span style = \"color: blue;top:200px;\">"+tagCount+" passed and "+tagFailed+"failed</span>"
 
-
-
-
-
-
-
-
-
-}
-else{
-    alert("not matched");
-}
 document.querySelector(".popup").style.display="flex";
 
 
-
-
 }
+
+
+
+
+
+
+
+
+
 
 const btn = document.getElementById('close');
 const cl = document.getElementsByClassName('.popup');
@@ -139,11 +176,13 @@ btn.addEventListener('click', () => {
 
 
 <style>
-    body [type=button]{
+    .button-test{
     background-color: rgb(65, 126, 65);
     border-radius: 10px;
     padding: 5px;
     color: white;
+    width: 60px;
+    cursor: pointer;
 }
 .popup{
     background: rgba(0,0,0,0.6);
@@ -168,6 +207,12 @@ btn.addEventListener('click', () => {
     top: -14px;
     right: 1px;
     cursor: pointer;
+    border: 2px solid rgb(255, 193, 193);
+    background-color: rgb(234, 0, 0);
+    border-radius: 10px;
+    color: white;
+    width: 60px;
+    text-align: center;
 }
 
 
