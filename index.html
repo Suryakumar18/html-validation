@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="syle.css">
+</head>
+<body>
+
+
+
+    
+    <label for="file0" id="mylist">Java</label>
+    <progress id="file0" value="72" max="100"></progress><BR>
+    
+    <label for="title1" id="mylist1">Python</label>
+    <progress id="file1" value="95" max="100"></progress><BR>
+    
+   <label for="title2" id="mylist2">C</label>
+    <progress id="file2" value="63" max="100"></progress><BR>
+    
+    <label for="title3" id="mylist3">C++</label>
+    <progress id="file3" value="43" max="100"></progress>
+
+    
+    <p onclick="validate()" id="clickme" class="button-test">Validate </p>
+    <div class="popup">
+        <div class="popup-content">
+            <p class="close" id="close">close</p>
+            <div class="" id="pop" style="color: green;">
+
+            </div>
+
+        </div>
+        
+    </div>
+
+<script>
+    function validate(){
+
+
+var item1 = document.getElementById("mylist");
+var check1= document.getElementsByTagName("label")[0];
+
+
+var item2 = document.getElementById("file0");
+var check2= document.getElementsByTagName("progress")[0];
+
+var item3 = document.getElementById("mylist1");
+var check3= document.getElementsByTagName("label")[1];
+
+
+var item4 = document.getElementById("file1");
+var check4= document.getElementsByTagName("progress")[1];
+
+
+var item5 = document.getElementById("mylist2");
+var check5= document.getElementsByTagName("label")[2];
+
+
+var item6 = document.getElementById("file2");
+var check6= document.getElementsByTagName("progress")[2];
+
+
+var val1 = item1.isSameNode(check1);
+var val2 = item2.isSameNode(check2);
+var val3 = item3.isSameNode(check3);
+var val4 = item4.isSameNode(check4);
+var val5 = item5.isSameNode(check5);
+var val6 = item6.isSameNode(check6);
+if(val1===true&&val2===true&&val3===true&&val4===true&&val5===true&&val6===true){
+    
+
+    
+    var fix1 = 72;
+    var t1 = document.getElementsByTagName("progress")[0].value;
+    var res1 = fix1===t1;
+    
+
+    var fix2 = 95;
+    var t2 = document.getElementsByTagName("progress")[1].value;
+    var res2 = fix2===t2;
+
+    var fix3 = 63;
+    var t3 = document.getElementsByTagName("progress")[2].value;
+    var res3 = fix3===t3;
+
+    var fix4 = 40;
+    var t4 = document.getElementsByTagName("progress")[3].value;
+    var res4 = fix4===t4;
+
+    var array1=[]
+
+    array1.push(res1);
+    array1.push(res2);
+    array1.push(res3);
+    array1.push(res4);
+
+    
+    for(let i=0;i<4;i++){
+        if(array1[i]===true){
+          document.getElementById("pop").innerHTML+="<h3>pass</h3>";
+        }
+        else{
+            document.getElementById("pop").innerHTML+="<h3 >failed</h3>";;
+        }
+    }
+
+
+
+
+
+
+
+
+
+}
+else{
+    alert("not matched");
+}
+document.querySelector(".popup").style.display="flex";
+
+
+
+
+}
+
+const btn = document.getElementById('close');
+const cl = document.getElementsByClassName('.popup');
+
+btn.addEventListener('click', () => {
+    document.querySelector(".popup").style.display="none";
+});
+</script>
+
+
+
+<style>
+    body [type=button]{
+    background-color: rgb(65, 126, 65);
+    border-radius: 10px;
+    padding: 5px;
+    color: white;
+}
+.popup{
+    background: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.popup-content{
+    height: 380px;
+    width: 500px;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+}
+.close{
+    position: absolute;
+    top: -14px;
+    right: 1px;
+    cursor: pointer;
+}
+
+
+</style>
+</body>
+</html>
