@@ -6,27 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     
-    <link rel="stylesheet" href="syle.css">
+    <link rel="stylesheet" href="test.css">
 </head>
 <body>
 
 
 
     
-    <label for="file0" id="mylist">Java</label>
-    <progress id="file0" value="72" max="100"></progress><BR>
+    <label for="file0" id="mylist" style="font-size: 40px;">Java</label>
+    <progress id="file0" value="72" max="100" class="prog1"></progress><BR>
     
-    <label for="title1" id="mylist1">Python</label>
-    <progress id="file1" value="95" max="100"></progress><BR>
+    <label for="title1" id="mylist1" style="font-size: 40px;">Python</label>
+    <progress id="file1" value="95" max="100" class="prog2"></progress><BR>
     
-   <label for="title2" id="mylist2">C</label>
-    <progress id="file2" value="63" max="100"></progress><BR>
+   <label for="title2" id="mylist2" style="font-size: 40px;">C</label>
+    <progress id="file2" value="63" max="100" class="prog3"></progress><BR>
     
-    <label for="title3" id="mylist3">C++</label>
-    <progress id="file3" value="40" max="100"></progress>
+    <label for="title3" id="mylist3" style="font-size: 40px;">C++</label>
+    <progress id="file3" value="40" max="100" class="prog4"></progress>
 
     
-    <p onclick="validate()" id="clickme" class="button-test">Validate </p>
+    <p onclick="validate()" id="clickme" class="button-test">Validate1</p>
+    <p onclick="CssValidate()" id="clickme2" class="button-test">Validate2</p>
 
 
     <div class="popup">
@@ -39,9 +40,15 @@
             <p id="pop-tag"> 
 
             </p>
+            
+            
             <p class="" id="pop" style="color: green;">
 
             </p>
+            <p id="pop-tag1"></p>
+            <p id = "pop-tag2"></p>
+            <p id="pop-ex"></p>
+            <p id="pop-tag1-new"></p>
 
             <span id="out">
 
@@ -50,6 +57,15 @@
         </div>
         
     </div>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -141,11 +157,11 @@ document.getElementById("pop-tag").innerHTML+="<p style = \"color: blue\">"+coun
     var tagFailed=0; 
     for(let i=1;i<5;i++){
         if(array1[i]===true){
-          document.getElementById("pop").innerHTML+="<span>test case "+i+"  passed</span><br>"
+          document.getElementById("pop").innerHTML+="<span>value-test case "+i+"  passed</span><br>"
           tagCount++;
         }
         else{
-            document.getElementById("pop").innerHTML+="<span style=\"color:red\";>test case "+i+" failed</span><br>";
+            document.getElementById("pop").innerHTML+="<span style=\"color:red\";>value-test case "+i+" failed</span><br>";
             tagFailed++
         }
     }
@@ -156,21 +172,166 @@ document.querySelector(".popup").style.display="flex";
 
 }
 
-
-
-
-
-
-
-
-
-
 const btn = document.getElementById('close');
 const cl = document.getElementsByClassName('.popup');
 
 btn.addEventListener('click', () => {
     document.querySelector(".popup").style.display="none";
 });
+
+
+
+
+function CssValidate(){
+    var cssTest1=document.getElementsByTagName('label')[0];
+    var TestCss1 = cssTest1.style.fontSize;
+    var t1="40px";
+    var final1 = TestCss1===t1;
+    
+
+
+    var cssTest2=document.getElementsByTagName('label')[1];
+    var TestCss2 = cssTest2.style.fontSize;
+    var t2="30px";
+    var final2 = TestCss2===t2;
+    
+
+
+    var cssTest3 = document.getElementsByTagName('label')[2];
+    var TestCss3 = cssTest3.style.fontSize;
+    var t3 = "30px"
+    var final3 = TestCss3===t3;
+
+
+
+
+    var cssTest4 = document.getElementsByTagName('label')[3];
+    var TestCss4 = cssTest4.style.fontSize;
+    var t4 = "40px"
+    var final4 = TestCss4===t4;
+    
+
+    var CssArr = [];
+    CssArr.push(final1);
+    CssArr.push(final2);
+    CssArr.push(final3);
+    CssArr.push(final4);
+
+    var cssCount;
+    document.getElementById("pop-tag").innerHTML+="<span style=\"font-size: 25px;margin-left:130px\";>inline-css-output</span><br>" ;
+    var s = 1;
+    var l=0;
+    var m=0;
+    for(var j=0;j<CssArr.length;j++){
+        if(CssArr[j]===true){
+           
+            document.getElementById("pop").innerHTML+="<span>inline-css-test case "+s+"  passed</span><br>"
+            l++;
+
+        }
+        else{
+            document.getElementById("pop").innerHTML+="<span style=\"color:red\";>value-test case "+s+" failed</span><br>";
+            m++;
+        }
+        s++;
+    }
+    document.getElementById("pop-tag1").innerHTML+="<span style = \"color: blue\">"+l+" passed and "+m+"failed</span><br>"
+    
+
+
+    document.getElementById("pop-tag2").innerHTML+="<span style=\"font-size: 25px;margin-left:130px\";>External-css-output</span><br>" ;
+
+
+    //Code for external Css
+    var exCss = document.querySelector(".prog1");
+    var obj = getComputedStyle(exCss);
+    csswidth = obj.getPropertyValue("width");
+    actualWidth1 = "200px";
+    var checkCss1 = csswidth===actualWidth1;
+    
+
+
+
+    var exCss2 = document.querySelector(".prog2");
+    var obj2 = getComputedStyle(exCss2);
+    csswidth2 = obj2.getPropertyValue("width");
+    actualWidth2 = "200px";
+    var checkCss2 = csswidth2===actualWidth2;
+ 
+
+
+    var exCss3 = document.querySelector(".prog3");
+    var obj3 = getComputedStyle(exCss3);
+    csswidth3 = obj3.getPropertyValue("width");
+    actualWidth3 = "110px";
+    var checkCss3 = csswidth3===actualWidth3;
+ 
+
+
+    var exCss4 = document.querySelector(".prog4");
+    var obj4 = getComputedStyle(exCss4);
+    csswidth4 = obj.getPropertyValue("height");
+    actualWidth4 = "40px";
+    var checkCss4 = csswidth4===actualWidth4;
+
+
+    var ArrCss = [];
+    ArrCss.push(checkCss1);
+    ArrCss.push(checkCss2);
+    ArrCss.push(checkCss3);
+    ArrCss.push(checkCss4);
+    var cssCountTest=1;
+    var csCount=0
+     var csCount2 =0;
+    for(var n=0;n<ArrCss.length;n++){
+      
+        
+        if(ArrCss[n]===true){
+            document.getElementById("pop-ex").innerHTML+="<span style=\"color:green\";>ExternalCss-test case "+cssCountTest+"  passed</span><br>"
+            csCount++;
+        }
+        else{
+            document.getElementById("pop-ex").innerHTML+="<span style=\"color:red\";>ExternalCss-test case "+cssCountTest+"  failed</span><br>"
+            csCount2++;
+
+        }
+        cssCountTest++;
+    }
+    document.getElementById("pop-tag1-new").innerHTML+="<span style = \"color: blue\">"+csCount+" passed and "+csCount2+"failed</span><br>"
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+
+
+
+    document.querySelector(".popup").style.display="flex";
+
+  
+    
+}
 </script>
 
 
