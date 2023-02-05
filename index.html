@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="script.js"></script>
     
     <link rel="stylesheet" href="style.css">
 </head>
@@ -26,8 +27,12 @@
     <progress id="file3" value="40" max="100" class="prog4"></progress>
 
     
-    <p onclick="validate()" id="clickme" class="button-test">Validate1</p>
-    <p onclick="CssValidate()" id="clickme2" class="button-test">Validate2</p>
+   <div class="bt-container" style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; height: 100px; width: 300px;">
+    <p onclick="validate()" id="clickme" class="button-test" style="height: 20px;">Validate1</p>
+    <p onclick="CssValidate()" id="clickme2" class="button-test" style="height: 20px;">Css-Vali</p>
+    
+    <button type="button" onclick="BootValidate()" style="background-color: green;color: white; border-radius: 20px; height: 30px; ">Vlidate Bootstrap</button>
+   </div>
 
 
     <div class="popup">
@@ -58,6 +63,18 @@
         
     </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="col" style="background-color: blue;">Column1</div>
+            <div class="col" style="background-color: yellow;">Column2</div>
+            <div class="col" style="background-color: lavender;">Column3</div>
+            <div class="colśś" style="background-color: pink;">Column4</div>
+             <div class="col" style="background-color: #DB7093;">Column5</div>
+             <div class="col" style="background-color: #FFFAFA;">Column6</div>
+         </div>
+      
+    
+    </div>
 
 
 
@@ -332,6 +349,70 @@ function CssValidate(){
   
     
 }
+
+
+function BootValidate(){
+
+
+    document.querySelector(".popup").style.display="flex";
+    const element1 = document.querySelector('.container');
+    const element2 = document.querySelectorAll('.container .row').length;
+    const element3 = document.querySelectorAll('.row .col').length;
+    var test1 = element1.matches('.container');
+
+
+    document.getElementById("pop-tag").innerHTML+="<span style=\"font-size: 25px;margin-left:130px\";>BootStrap Output</span><br>" ;
+if(test1===true){
+    document.getElementById("pop").innerHTML+="<span>test case 1 passed</span><br>"
+    if(element2===1){
+        document.getElementById("pop").innerHTML+="<span>test case 2 passed</span><br>"
+        if(element3===6){
+            document.getElementById("pop").innerHTML+="<span>test case 3 passed</span><br>"
+        }
+        else{
+            document.getElementById("pop").innerHTML+="<span style=\"color:red\";>test case 3 failed</span><br>";
+        }
+    }
+    else{
+        console.log('case 2 failed')
+        if(element3===6){
+            console.log('case 3 passed');
+        }
+        else{
+            document.getElementById("pop").innerHTML+="<span style=\"color:red\";>test case 3 failed</span><br>";
+        }
+    }
+
+}
+else{
+    document.getElementById("pop").innerHTML+="<span style=\"color:red\";>test case 1 failed</span><br>";
+    if(element2===1){
+        document.getElementById("pop").innerHTML+="<span>test case 2 passed</span><br>"
+        if(element3===6){
+            console.log("case 3 passed")
+        }
+        else{
+            document.getElementById("pop").innerHTML+="<span style=\"color:red\";>test case 3 failed</span><br>";
+        }
+    }
+    else{
+        document.getElementById("pop").innerHTML+="<span style=\"color:red\";>test case 2 failed</span><br>";
+        if(element3===6){
+            document.getElementById("pop").innerHTML+="<span>test case 3 passed</span><br>"
+        }
+        else{
+            document.getElementById("pop").innerHTML+="<span style=\"color:red\";>test case 3 failed</span><br>";
+        }
+    }
+
+}
+
+}
+
+
+
+
+
 </script>
 
 
