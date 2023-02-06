@@ -31,7 +31,7 @@
     <p onclick="validate()" id="clickme" class="button-test" style="height: 20px;">Validate1</p>
     <p onclick="CssValidate()" id="clickme2" class="button-test" style="height: 20px;">Css-Vali</p>
     
-    <button type="button" onclick="BootValidate()" style="background-color: green;color: white; border-radius: 20px; height: 30px; ">Vlidate Bootstrap</button>
+    <button type="button" onclick="BootValidate()" style="cursor: pointer; background-color: green;color: white; border-radius: 20px; height: 30px; ">Vlidate Bootstrap</button>
    </div>
 
 
@@ -68,7 +68,7 @@
             <div class="col" style="background-color: blue;">Column1</div>
             <div class="col" style="background-color: yellow;">Column2</div>
             <div class="col" style="background-color: lavender;">Column3</div>
-            <div class="colśś" style="background-color: pink;">Column4</div>
+            <div class="col" style="background-color: pink;">Column4</div>
              <div class="col" style="background-color: #DB7093;">Column5</div>
              <div class="col" style="background-color: #FFFAFA;">Column6</div>
          </div>
@@ -358,7 +358,8 @@ function BootValidate(){
     const element1 = document.querySelector('.container');
     const element2 = document.querySelectorAll('.container .row').length;
     const element3 = document.querySelectorAll('.row .col').length;
-    var test1 = element1.matches('.container');
+    var test1 = element1.matches('.containe');
+  
 
 
     document.getElementById("pop-tag").innerHTML+="<span style=\"font-size: 25px;margin-left:130px\";>BootStrap Output</span><br>" ;
@@ -374,9 +375,9 @@ if(test1===true){
         }
     }
     else{
-        console.log('case 2 failed')
+        document.getElementById("pop").innerHTML+="<span style=\"color:red\";>test case 2 failed</span><br>";
         if(element3===6){
-            console.log('case 3 passed');
+            document.getElementById("pop").innerHTML+="<span>test case 3 passed</span><br>"
         }
         else{
             document.getElementById("pop").innerHTML+="<span style=\"color:red\";>test case 3 failed</span><br>";
@@ -389,7 +390,7 @@ else{
     if(element2===1){
         document.getElementById("pop").innerHTML+="<span>test case 2 passed</span><br>"
         if(element3===6){
-            console.log("case 3 passed")
+            document.getElementById("pop").innerHTML+="<span>test case 3 passed</span><br>"
         }
         else{
             document.getElementById("pop").innerHTML+="<span style=\"color:red\";>test case 3 failed</span><br>";
